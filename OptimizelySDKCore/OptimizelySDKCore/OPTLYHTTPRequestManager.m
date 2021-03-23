@@ -124,6 +124,8 @@ dispatch_queue_t networkTasksQueue()
                                                          }];
     
     [downloadTask resume];
+
+    [self.session finishTasksAndInvalidate];
 }
 
 - (void)GETWithParameters:(NSDictionary *)parameters
@@ -216,6 +218,8 @@ dispatch_queue_t networkTasksQueue()
     }];
     
     [dataTask resume];
+
+    [self.session finishTasksAndInvalidate];
 }
 
 - (void)GETIfModifiedSince:(NSString *)lastModifiedDate
@@ -326,6 +330,8 @@ dispatch_queue_t networkTasksQueue()
                                                                }];
     
     [uploadTask resume];
+
+    [self.session finishTasksAndInvalidate];
 }
 
 - (void)POSTWithParameters:(nonnull NSDictionary *)parameters
